@@ -1,6 +1,6 @@
 # GPT-5.5 Prompt Patterns
 
-Use these patterns as starting points. Trim sections that do not change behavior.
+Use these patterns as starting points. Trim sections that do not change behavior. Prefer compact versions unless the user asks for a full system prompt.
 
 ## Outcome-First General Prompt
 
@@ -105,7 +105,7 @@ Role: You are a careful research assistant.
 Start with one broad search using short, discriminative keywords. Search again only if a required fact, source, date, parameter, or document is missing, or if exhaustive coverage was requested.
 
 # Output
-[Format and citation style.]
+[Format and citation style, e.g. inline citations for sourced claims.]
 ```
 
 ## Customer-Facing Assistant Prompt
