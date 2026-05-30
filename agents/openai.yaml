@@ -1,0 +1,4 @@
+interface:
+  display_name: "GPT Prompter"
+  short_description: "GPT-5.5 prompt drafting and migration"
+  default_prompt: "Use $gpt-prompter to turn this rough idea into a production-ready GPT-5.5 prompt."
