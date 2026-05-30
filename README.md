@@ -6,7 +6,15 @@ GPT Prompter is a Codex skill for writing production-ready prompts for GPT-5.5. 
 
 ## Install
 
-Tell your Codex:
+Install with `npx`:
+
+```bash
+npx skills add https://github.com/jiaweizhang1995/gpt-prompter.git -g -a codex -y
+```
+
+The older `npx add-skill` package is deprecated; use `npx skills add` instead.
+
+Or tell your Codex:
 
 ```text
 Install this skill from https://github.com/jiaweizhang1995/gpt-prompter.git

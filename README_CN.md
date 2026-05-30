@@ -6,7 +6,15 @@ GPT Prompter 是一个 Codex skill，用来为 GPT-5.5 编写生产可用的 pro
 
 ## 安装
 
-跟你的 Codex 说：
+使用 `npx` 安装：
+
+```bash
+npx skills add https://github.com/jiaweizhang1995/gpt-prompter.git -g -a codex -y
+```
+
+旧的 `npx add-skill` 包已经废弃，请使用 `npx skills add`。
+
+也可以直接跟你的 Codex 说：
 
 ```text
 安装这个 skill：https://github.com/jiaweizhang1995/gpt-prompter.git
