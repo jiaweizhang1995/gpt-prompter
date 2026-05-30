@@ -13,7 +13,7 @@ Include a tailored subset when the user asks for:
 - frontend polish, visual taste, responsive behavior, layout fixes, or browser verification
 - a coding-agent prompt that will implement UI
 
-Do not paste every rule into every prompt. Select the rules that affect the requested artifact. Most frontend prompts should include only 3-5 frontend quality constraints plus one validation rule.
+Do not paste every rule into every prompt. Select the rules that affect the requested artifact.
 
 ## Adapted Frontend Instruction Block
 
@@ -107,27 +107,4 @@ Run [tests/build/lint/browser checks]. Render the UI and inspect for text fittin
 
 # Output
 Summarize changed files, validation performed, and any remaining risk.
-```
-
-## Extra-Compact Frontend Prompt Skeleton
-
-Use this for ordinary UI tasks where the user did not ask for a full system prompt:
-
-```prompt
-Role: You are a senior frontend engineer with strong product taste.
-
-# Goal
-Build [artifact] for [audience] so they can [primary workflow].
-
-# Requirements
-- Match the existing stack and design conventions.
-- Make the first screen immediately usable, not a marketing explainer.
-- Include loading, empty, error, hover/focus, and responsive states where relevant.
-- Keep the visual style domain-appropriate; avoid generic gradients, nested cards, and text overlap.
-
-# Validation
-Run the relevant build/test check and inspect the UI at mobile and desktop widths.
-
-# Output
-List changed files, validation run, and any remaining risk.
 ```

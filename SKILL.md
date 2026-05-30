@@ -16,7 +16,6 @@ Default behavior:
 - If the request is clear enough, make reasonable assumptions and produce the prompt.
 - Keep the generated prompt outcome-first: define the target result, success criteria, constraints, context, output shape, and stopping rules.
 - Do not expose internal framework names such as "outcome-first" unless the user asks for explanation.
-- Keep prompts compact by default: aim for 120-220 words for ordinary prompts, 220-380 words for coding, tool, research, or frontend prompts, and exceed 450 words only when the user asks for a detailed system prompt or the workflow is genuinely high-risk.
 
 ## Output Lock
 
@@ -33,17 +32,6 @@ API notes: [only when useful: reasoning.effort, text.verbosity, tool/state notes
 ````
 
 If setup is required before pasting, add a short note after the prompt. Do not add prompting theory unless requested.
-
-## Prompt Budget
-
-Use the smallest prompt that preserves the user's intent.
-
-- Prefer 4-6 short sections maximum.
-- Prefer 3-6 bullets total unless the output contract or tool policy requires more.
-- Omit sections that would contain generic filler.
-- For frontend prompts, include only the 3-5 most relevant frontend quality constraints instead of copying the full frontend reference.
-- For agent prompts, include only tools, permission gates, validation, and stop rules that affect the task.
-- For API notes, keep to one line unless the user asked for API configuration details.
 
 ## Hard Rules
 
@@ -90,8 +78,7 @@ Ask only for dimensions that are both missing and critical.
 3. Build the smallest prompt that can satisfy the outcome.
 4. Add detail only when it changes behavior: success criteria, output contract, tool rules, evidence rules, validation, stop rules.
 5. For API users, separate natural-language prompt content from API configuration notes. Prefer API parameters for `reasoning.effort`, `text.verbosity`, structured outputs, tools, and state handling when applicable.
-6. Cut the draft once before answering: remove any sentence that does not change behavior or protect a requirement.
-7. Run the audit checklist below before answering.
+6. Run the audit checklist below before answering.
 
 ## Mode Guidance
 
@@ -139,7 +126,7 @@ Include:
 
 ### Frontend Prompt
 
-Load `references/frontend-prompt.md`. Include frontend guidance only when the prompt asks for UI, app, website, game, dashboard, visual design, or browser verification. Keep it tailored to the domain rather than pasting every frontend rule. For most frontend requests, choose one compact visual direction, one workflow requirement, one state/responsive requirement, and one validation requirement.
+Load `references/frontend-prompt.md`. Include frontend guidance only when the prompt asks for UI, app, website, game, dashboard, visual design, or browser verification. Keep it tailored to the domain rather than pasting every frontend rule.
 
 ### Grounded Research Prompt
 
@@ -149,7 +136,7 @@ Include:
 - what counts as enough evidence
 - retrieval budget and stop rules
 - missing-evidence behavior
-- citation format, preferably inline citations unless the user asks otherwise
+- citation format
 - instruction to avoid unsupported specifics
 
 ### Customer-Facing Assistant Prompt
@@ -170,7 +157,6 @@ Before delivering:
 - Frontend prompts load the frontend reference and avoid generic generated-UI defaults.
 - No visible chain-of-thought, fake expert panels, fake self-consistency, or gratuitous prompt chaining.
 - Every sentence in the generated prompt changes model behavior.
-- The generated prompt fits the prompt budget unless the user explicitly asked for a long system prompt.
 
 ## References
 
