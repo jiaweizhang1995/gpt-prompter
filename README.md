@@ -23,13 +23,7 @@ Use $gpt-prompter to turn this rough idea into a production-ready GPT-5.5 prompt
 [your idea]
 ```
 
-You can also use it for:
-
-- rewriting older prompts for GPT-5.5
-- creating prompts for GPT-5.5 coding agents
-- adding retrieval and citation rules
-- adding validation and stop conditions
-- generating frontend/UI prompts based on OpenAI frontend guidance
+GPT-5.5 works best with shorter, outcome-first prompts: describe what good looks like, the constraints that matter, the evidence available, and what the final answer should contain. This skill helps Codex turn rough instructions into that shape, adding stopping rules, evidence behavior, validation checks, and frontend guidance only when they improve the result.
 
 ## What's Included
 
@@ -37,4 +31,3 @@ You can also use it for:
 - `references/gpt-5.5-prompt-guidance.md`: GPT-5.5 prompt rules
 - `references/frontend-prompt.md`: frontend prompt guidance
 - `references/prompt-patterns.md`: reusable prompt templates
-

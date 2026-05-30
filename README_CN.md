@@ -23,13 +23,7 @@ Use $gpt-prompter to turn this rough idea into a production-ready GPT-5.5 prompt
 [你的想法]
 ```
 
-也可以用它来：
-
-- 把旧 prompt 改写成 GPT-5.5 风格
-- 为 GPT-5.5 coding agent 写 prompt
-- 加入检索、引用和事实约束
-- 加入验证规则和停止条件
-- 基于 OpenAI 前端指南生成 UI/frontend prompt
+GPT-5.5 更适合简短、结果导向的 prompt：说明什么是好的结果、哪些约束重要、有哪些可用证据，以及最终回答应该包含什么。这个 skill 会帮助 Codex 把粗略想法整理成这种结构，并只在有帮助时加入停止规则、证据处理、验证检查和前端指导。
 
 ## 包含内容
 
@@ -37,4 +31,3 @@ Use $gpt-prompter to turn this rough idea into a production-ready GPT-5.5 prompt
 - `references/gpt-5.5-prompt-guidance.md`：GPT-5.5 prompt 规则
 - `references/frontend-prompt.md`：前端 prompt 指南
 - `references/prompt-patterns.md`：可复用 prompt 模板
-
