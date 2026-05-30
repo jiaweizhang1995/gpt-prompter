@@ -12,8 +12,6 @@ Install with `npx`:
 npx skills add https://github.com/jiaweizhang1995/gpt-prompter.git -g -a codex -y
 ```
 
-The older `npx add-skill` package is deprecated; use `npx skills add` instead.
-
 Or tell your Codex:
 
 ```text
