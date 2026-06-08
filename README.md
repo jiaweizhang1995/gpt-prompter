@@ -1,39 +1,66 @@
-# GPT Prompter
+# Jimmy's Codex Skills
 
 [中文说明](README_CN.md)
 
-GPT Prompter is a Codex skill for writing production-ready prompts for GPT-5.5. It helps Codex create, rewrite, migrate, and diagnose prompts using OpenAI's GPT-5.5 guidance for outcome-first prompting, tool use, retrieval budgets, validation, and frontend UI prompts.
+This repository is a personal Codex skills catalog. Each skill lives in its own folder under `skills/`, so the repo can grow beyond the original `gpt-prompter` skill without mixing instructions, references, and helper files.
+
+## Skills
+
+| Skill | Purpose | Install URL |
+| --- | --- | --- |
+| `gpt-prompter` | Turn rough intent into a production-ready GPT-5.5 prompt. | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/gpt-prompter` |
+| `goal-prompt-writer` | Draft copy-ready Codex `/goal` prompts from rough requirements. | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/goal-prompt-writer` |
 
 ## Install
 
-Install with `npx`:
+Install a single skill by giving Codex the skill directory URL:
+
+```text
+$skill-installer install https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/gpt-prompter
+```
+
+Or install manually after cloning:
 
 ```bash
-npx skills add https://github.com/jiaweizhang1995/gpt-prompter.git -g -a codex -y
+mkdir -p ~/.codex/skills
+cp -R skills/gpt-prompter ~/.codex/skills/gpt-prompter
+cp -R skills/goal-prompt-writer ~/.codex/skills/goal-prompt-writer
 ```
 
-Or tell your Codex:
+Restart Codex after installing or updating skills so the metadata is reloaded.
+
+## Repository Layout
 
 ```text
-Install this skill from https://github.com/jiaweizhang1995/gpt-prompter.git
+.
+├── skills/
+│   ├── gpt-prompter/
+│   │   ├── SKILL.md
+│   │   ├── agents/
+│   │   └── references/
+│   └── goal-prompt-writer/
+│       ├── SKILL.md
+│       └── agents/
+└── scripts/
+    └── import-local-skill.sh
 ```
 
-Codex should clone the skill and install it into your local skills directory.
+Each skill folder should be self-contained:
 
-## Use
+- `SKILL.md` is required and must include `name` and `description` frontmatter.
+- `references/` stores longer guidance loaded only when needed.
+- `scripts/` stores deterministic helper scripts used by that specific skill.
+- `agents/` stores Codex app metadata such as `openai.yaml`.
 
-After installation, ask Codex:
+## Add Or Update A Skill
 
-```text
-Use $gpt-prompter to turn this rough idea into a production-ready GPT-5.5 prompt:
-[your idea]
+When a skill already exists in your local Codex skills folder:
+
+```bash
+./scripts/import-local-skill.sh goal-prompt-writer
+git diff -- skills/goal-prompt-writer
 ```
 
-GPT-5.5 works best with shorter, outcome-first prompts: describe what good looks like, the constraints that matter, the evidence available, and what the final answer should contain. This skill helps Codex turn rough instructions into that shape, adding stopping rules, evidence behavior, validation checks, and frontend guidance only when they improve the result.
+Then update the `Skills` table above if this is a new skill.
 
-## What's Included
-
-- `SKILL.md`: the Codex skill instructions
-- `references/gpt-5.5-prompt-guidance.md`: GPT-5.5 prompt rules
-- `references/frontend-prompt.md`: frontend prompt guidance
-- `references/prompt-patterns.md`: reusable prompt templates
+Keep each skill narrow, portable, and easy to install independently. Avoid repository-specific assumptions inside a skill unless the skill is explicitly personal or project-local.

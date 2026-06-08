@@ -1,0 +1,4 @@
+interface:
+  display_name: "Goal Prompt Writer"
+  short_description: "Draft copy-ready Codex /goal prompts"
+  default_prompt: "Use $goal-prompt-writer to turn this rough request into a copy-ready Codex /goal prompt."

@@ -1,39 +1,66 @@
-# GPT Prompter
+# Jimmy 的 Codex Skills
 
 [English README](README.md)
 
-GPT Prompter 是一个 Codex skill，用来为 GPT-5.5 编写生产可用的 prompt。它可以帮助 Codex 创建、改写、迁移和诊断 prompt，并参考 OpenAI GPT-5.5 的 outcome-first prompting、工具调用、检索预算、验证规则和前端 UI prompt 指南。
+这个仓库现在是一个个人 Codex skills 目录。每个 skill 都放在 `skills/` 下面的独立目录里，这样以后不管你继续新增 prompt 类、goal 类、运维类还是代码类 skill，都不会把指令、参考资料和脚本混在仓库根目录。
+
+## Skills
+
+| Skill | 用途 | 安装 URL |
+| --- | --- | --- |
+| `gpt-prompter` | 把粗略需求整理成生产可用的 GPT-5.5 prompt。 | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/gpt-prompter` |
+| `goal-prompt-writer` | 把粗略需求整理成可直接复制的 Codex `/goal` prompt。 | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/goal-prompt-writer` |
 
 ## 安装
 
-使用 `npx` 安装：
+把单个 skill 的目录 URL 交给 Codex 安装：
+
+```text
+$skill-installer install https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/gpt-prompter
+```
+
+也可以 clone 之后手动复制：
 
 ```bash
-npx skills add https://github.com/jiaweizhang1995/gpt-prompter.git -g -a codex -y
+mkdir -p ~/.codex/skills
+cp -R skills/gpt-prompter ~/.codex/skills/gpt-prompter
+cp -R skills/goal-prompt-writer ~/.codex/skills/goal-prompt-writer
 ```
 
-也可以直接跟你的 Codex 说：
+安装或更新后，重启 Codex，让它重新加载 skill metadata。
+
+## 仓库结构
 
 ```text
-安装这个 skill：https://github.com/jiaweizhang1995/gpt-prompter.git
+.
+├── skills/
+│   ├── gpt-prompter/
+│   │   ├── SKILL.md
+│   │   ├── agents/
+│   │   └── references/
+│   └── goal-prompt-writer/
+│       ├── SKILL.md
+│       └── agents/
+└── scripts/
+    └── import-local-skill.sh
 ```
 
-Codex 会知道如何从这个 GitHub 仓库安装 skill。
+每个 skill 目录都应该自包含：
 
-## 使用
+- `SKILL.md` 必须存在，并且 frontmatter 里要有 `name` 和 `description`。
+- `references/` 放只有需要时才读取的长参考资料。
+- `scripts/` 放这个 skill 专用的确定性脚本。
+- `agents/` 放 Codex app metadata，比如 `openai.yaml`。
 
-安装后，你可以这样对 Codex 说：
+## 新增或更新 Skill
 
-```text
-Use $gpt-prompter to turn this rough idea into a production-ready GPT-5.5 prompt:
-[你的想法]
+如果 skill 已经在你的本地 Codex skills 目录里：
+
+```bash
+./scripts/import-local-skill.sh goal-prompt-writer
+git diff -- skills/goal-prompt-writer
 ```
 
-GPT-5.5 更适合简短、结果导向的 prompt：说明什么是好的结果、哪些约束重要、有哪些可用证据，以及最终回答应该包含什么。这个 skill 会帮助 Codex 把粗略想法整理成这种结构，并只在有帮助时加入停止规则、证据处理、验证检查和前端指导。
+如果这是一个新 skill，再把它补到上面的 `Skills` 表格里。
 
-## 包含内容
-
-- `SKILL.md`：Codex skill 主指令
-- `references/gpt-5.5-prompt-guidance.md`：GPT-5.5 prompt 规则
-- `references/frontend-prompt.md`：前端 prompt 指南
-- `references/prompt-patterns.md`：可复用 prompt 模板
+尽量让每个 skill 目标窄、可移植、能独立安装。除非这个 skill 明确是个人或项目专用，否则不要把某个仓库的隐含假设写死进去。
