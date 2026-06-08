@@ -8,6 +8,7 @@ This repository is a personal Codex skills catalog. Each skill lives in its own 
 
 | Skill | Purpose | Install URL |
 | --- | --- | --- |
+| `ai-researcher` | Produce implementation-ready technical research grounded in authoritative sources. | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/ai-researcher` |
 | `gpt-prompter` | Turn rough intent into a production-ready GPT-5.5 prompt. | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/gpt-prompter` |
 | `goal-prompt-writer` | Draft copy-ready Codex `/goal` prompts from rough requirements. | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/goal-prompt-writer` |
 
@@ -23,6 +24,7 @@ Or install manually after cloning:
 
 ```bash
 mkdir -p ~/.codex/skills
+cp -R skills/ai-researcher ~/.codex/skills/ai-researcher
 cp -R skills/gpt-prompter ~/.codex/skills/gpt-prompter
 cp -R skills/goal-prompt-writer ~/.codex/skills/goal-prompt-writer
 ```
@@ -34,6 +36,8 @@ Restart Codex after installing or updating skills so the metadata is reloaded.
 ```text
 .
 ├── skills/
+│   ├── ai-researcher/
+│   │   └── SKILL.md
 │   ├── gpt-prompter/
 │   │   ├── SKILL.md
 │   │   ├── agents/

@@ -8,6 +8,7 @@
 
 | Skill | 用途 | 安装 URL |
 | --- | --- | --- |
+| `ai-researcher` | 基于权威来源产出可落地的技术调研结论。 | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/ai-researcher` |
 | `gpt-prompter` | 把粗略需求整理成生产可用的 GPT-5.5 prompt。 | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/gpt-prompter` |
 | `goal-prompt-writer` | 把粗略需求整理成可直接复制的 Codex `/goal` prompt。 | `https://github.com/jiaweizhang1995/gpt-prompter/tree/main/skills/goal-prompt-writer` |
 
@@ -23,6 +24,7 @@ $skill-installer install https://github.com/jiaweizhang1995/gpt-prompter/tree/ma
 
 ```bash
 mkdir -p ~/.codex/skills
+cp -R skills/ai-researcher ~/.codex/skills/ai-researcher
 cp -R skills/gpt-prompter ~/.codex/skills/gpt-prompter
 cp -R skills/goal-prompt-writer ~/.codex/skills/goal-prompt-writer
 ```
@@ -34,6 +36,8 @@ cp -R skills/goal-prompt-writer ~/.codex/skills/goal-prompt-writer
 ```text
 .
 ├── skills/
+│   ├── ai-researcher/
+│   │   └── SKILL.md
 │   ├── gpt-prompter/
 │   │   ├── SKILL.md
 │   │   ├── agents/
